@@ -1,0 +1,68 @@
+﻿<Window x:Class="UI.Gestion_contenido"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UI"
+        mc:Ignorable="d"
+        Title="MyBackLog" Height="760.625" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid Background="#FF4C1130">
+        <Label Name="Titulo" Content="Agregar o editar contenido" HorizontalAlignment="Left" Margin="250,10,0,0" VerticalAlignment="Top" FontSize="22" Background="{x:Null}" Foreground="#DDFFFFFF"/>
+        <Label Content="Titulo" HorizontalAlignment="Left" Margin="10,66,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18"/>
+        <TextBox x:Name="Txt_Titulo" Foreground="Black" Background="White" HorizontalAlignment="Left" Height="23" Margin="10,105,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="256"/>
+        <TextBox x:Name="Txt_Descripcion" Foreground="Black" Background="White" HorizontalAlignment="Left" Height="59" Margin="10,181,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="256"/>
+        <Label Content="Descripcion" HorizontalAlignment="Left" Margin="10,133,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18"/>
+        <Label Content="Calificacion" HorizontalAlignment="Left" Margin="13,256,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18"/>
+        <TextBox x:Name="Txt_Calificacion" Foreground="Black" Background="White" HorizontalAlignment="Left" Height="23" Margin="13,290,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="256"/>
+        <Label Content="Editar horas inversion" HorizontalAlignment="Left" Margin="13,328,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18"/>
+        <TextBox x:Name="Txt_Horas_Inversion" Foreground="Black" Background="White" HorizontalAlignment="Left" Height="23" Margin="13,367,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="256"/>
+        <Label Content="Plataforma" HorizontalAlignment="Left" Margin="14,395,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18"/>
+        <ComboBox Foreground="Black" Background="White" x:Name="ComboBox_Plataforma" HorizontalAlignment="Left" Margin="14,434,0,0" VerticalAlignment="Top" Width="256"/>
+        <Label Content="Progresion" HorizontalAlignment="Left" Margin="14,473,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18"/>
+        <ComboBox Foreground="Black" Background="White" x:Name="ComboBox_Progresion" HorizontalAlignment="Left" Margin="14,512,0,0" VerticalAlignment="Top" Width="256"/>
+        <Label Content="Adquision" HorizontalAlignment="Left" Margin="14,556,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18"/>
+        <ComboBox Foreground="Black" Background="White" x:Name="ComboBox_Adquisicion" HorizontalAlignment="Left" Margin="14,607,0,0" VerticalAlignment="Top" Width="256"/>
+        <Button x:Name="aceptar_editar" Content="Aceptar" HorizontalAlignment="Left" Margin="239,666,0,0" VerticalAlignment="Top" Width="85" Height="36" Background="#FF666666" Click="aceptar_editar_Click" />
+        <Button x:Name="salir_editar" Content="Cancelar" HorizontalAlignment="Left" Margin="383,666,0,0" VerticalAlignment="Top" Width="85" Height="36" Background="#FF666666" Click="salir_editar_Click" />
+        <Label Content="Seleccionar subtipo" HorizontalAlignment="Left" Margin="420,66,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18" RenderTransformOrigin="2.274,-8.706"/>
+        <ComboBox Foreground="Black" Background="White" x:Name="subtipo_cbo" HorizontalAlignment="Left" Margin="420,106,0,0" VerticalAlignment="Top" Width="256" SelectionChanged="subtipo_cbo_SelectionChanged">
+            <ComboBoxItem Content="Libro" HorizontalAlignment="Left" Width="254"/>
+            <ComboBoxItem Content="Pelicula" HorizontalAlignment="Left" Width="254"/>
+            <ComboBoxItem Content="Serie" HorizontalAlignment="Left" Width="254"/>
+            <ComboBoxItem Content="Juego" HorizontalAlignment="Left" Width="254"/>
+        </ComboBox>
+
+        <Grid Visibility="Collapsed" x:Name="pelicula_grid" HorizontalAlignment="Left" Height="332" Margin="421,164,0,0" VerticalAlignment="Top" Width="350">
+            <Label Content="Agregar duracion (en minutos)" HorizontalAlignment="Left" Margin="10,17,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18"/>
+            <TextBox x:Name="Txt_Pelicula_Duracion" Foreground="Black" Background="White" HorizontalAlignment="Left" Height="23" Margin="10,67,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="162"/>
+            <Label Content="Minutos vistos" HorizontalAlignment="Left" Margin="10,136,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18"/>
+            <TextBox x:Name="Txt_Pelicula_Minuto" HorizontalAlignment="Left" Foreground="Black" Background="White" Height="23" Margin="10,186,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="162"/>
+        </Grid>
+        <Grid x:Name="grid_juego" Visibility="Collapsed" HorizontalAlignment="Left" Height="448" Margin="421,181,0,0" VerticalAlignment="Top" Width="341">
+            <DataGrid Name="DataGrid_juego_tabla" HorizontalAlignment="Left" Height="418" VerticalAlignment="Top" Width="331"
+                  CanUserReorderColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" ColumnWidth="*" 
+                  SizeChanged="tabla_SizeChanged" CanUserResizeColumns="False"/>
+            <Button Name="Btn_juego_Add" Content="Add" HorizontalAlignment="Left" Margin="168,423,0,0" VerticalAlignment="Top" Width="74" Click="Btn_Add_Click"/>
+            <Button Name="Btn_juego_Delete" Content="Delete" HorizontalAlignment="Left" Margin="256,423,0,0" VerticalAlignment="Top" Width="75" Click="Btn_Delete_Click"/>
+        </Grid>
+        <Grid x:Name="grid_serie" Visibility="Collapsed" HorizontalAlignment="Left" Height="387" Margin="421,190,0,0" VerticalAlignment="Top" Width="341">
+            <Label Content="Tiempo de los capitulos (en minutos)" FontSize="18" Foreground="White" HorizontalAlignment="Left" Margin="7,2,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="Txt_Tiempo_Capitulos" HorizontalAlignment="Left" Height="23" Margin="7,41,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="232" Foreground="Black" Background="White"/>
+            <Label Content="Agregar capitulos temporadas" FontSize="18" Foreground="White" HorizontalAlignment="Left" Margin="7,78,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="Txt_Capitulos_Temporada" HorizontalAlignment="Left" Height="23" Margin="7,117,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="232" Foreground="Black" Background="White"/>
+            <Label Content="Agregar temporada actual" FontSize="18" Foreground="White" HorizontalAlignment="Left" Margin="7,153,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="Txt_Temporada" HorizontalAlignment="Left" Height="23" Margin="7,192,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="232" Foreground="Black" Background="White"/>
+            <Label Content="Agregar capitulo actual" FontSize="18" Foreground="White" HorizontalAlignment="Left" Margin="7,231,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="Txt_Capitulo" HorizontalAlignment="Left" Height="23" Margin="7,272,0,-20" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="232" Foreground="Black" Background="White"/>
+            <Label Content="Agregar minuto actual" FontSize="18" Foreground="White" HorizontalAlignment="Left" Margin="7,300,0,-59" VerticalAlignment="Top"/>
+            <TextBox x:Name="Txt_MinutoSerie" HorizontalAlignment="Left" Height="23" Margin="7,339,0,-87" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="232" Foreground="Black" Background="White"/>
+        </Grid>
+        <Grid x:Name="grid_libro" Visibility="Collapsed" HorizontalAlignment="Left" Height="262" Margin="420,167,0,0" VerticalAlignment="Top" Width="351">
+            <Label Content="Agregar cantidad de paginas" Foreground="White" FontSize="18" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.424,-0.745"/>
+            <TextBox x:Name="Txt_Libro_CantidadPaginas" HorizontalAlignment="Left" Height="23" Margin="10,53,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="158" Foreground="Black" Background="White"/>
+            <Label Content="Pagina actual" Foreground="White" FontSize="18" HorizontalAlignment="Left" Margin="10,116,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="Txt_Libro_PaginaActual" HorizontalAlignment="Left" Height="23" Margin="10,164,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="158" Foreground="Black" Background="White"/>
+        </Grid>
+
+    </Grid>
+</Window>
